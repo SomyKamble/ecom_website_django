@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-safety.css">
+<div class="w3-container">
+  <h2>Card Example</h2>
+  {% if user.is_authenticated %}
+  <div class="w3-card-4 w3-dark-grey" style="width:100%">
+
+    <div class="w3-container w3-center">
+      <h3>Cart Details for </h3>
+
+      <h5>{{user.username}}</h5>
+
+      <div class="w3-section">
+        <center>
+        <table >
+          <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+          {% for item in order.get_cart_items %}
+      <tr>
+        <div class="w3-card-4 " style="width:100%">
+        <td ><img src="{{item.product.prod_images.url}}" alt="Avatar" style="width:20%">
+          <button class="w3-button w3-green w3-margin-left"  >{{item.product.name}}</button></td>
+        <td><button class="w3-button w3-red" >{{item.product.price}}</button></td>
+          <td><a class="w3-button w3-safety-red" href="/delete/{{item.product.pk}}" >Delete</a></td>
+        </div>
+          </tr>
+        {% endfor %}
+          </table>
+          </center>
+         <button class="w3-button w3-safety-orange">total</button> <button class="w3-button w3-red">{{order.get_cart_total}}</button>
+      </div>
+    </div>
+{% endif %}
+  </div>
+</div>
+
+
+
+{% endblock content %}
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+
+<div class="w3-row-padding">
+    <h4>The Search  Results for   {{request.GET.q}} </h4>
+</div>
+<div class="w3-row-padding">
+{% for prod in Products %}
+    <a href="/{{prod.pk}}">
+<div class="w3-col s4 ">
+<div class="w3-card-4 ">
+  <center><img src="{{prod.prod_images.url}}"  height="180" width="170"   alt="Alps">
+  <p><h3>{{prod.name}}</h3></p></center>
+
+
+  <div class="w3-container w3-center">
+    <p>{{prod.desc}}</p>
+  </div>
+</div>
+    <p>
+     </a>
+</div>
+
+{% endfor %}
+</div >
+{% endblock content %}
+

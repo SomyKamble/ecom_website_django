@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="w3-container w3-teal">
+   <h1>{{Order.product_name.name}}</h1>
+</div>
+
+<img src="{{Order.product_name.prod_images.url}}" alt="Car" style="width:100%">
+<p>Order ID<h2>{{Order.order_id}}</h2></p>
+<div class="w3-container">
+  <p>{{Order.order_date}}</p>
+</div>
+
+{% endblock content %}

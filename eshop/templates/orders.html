@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+<h2>Your Orders</h2>
+<div class="w3-row-padding">
+{% for prod in Orders %}
+    <a href="orders/{{prod.pk}}">
+<div class="w3-col s4 ">
+<div class="w3-card-4 ">
+
+  <center><img src="{{prod.product_name.prod_images.url}}"  height="180" width="170"   alt="Alps">
+  <p><h3>{{prod.order_id}}</h3></p></center>
+
+
+  <div class="w3-container w3-center">
+    <p>{{prod.product_name.desc}}</p>
+  </div>
+</div>
+    <p>
+     </a>
+</div>
+
+{% endfor %}
+</div >
+{% endblock content %}
+
+
+</body>
+</html>
